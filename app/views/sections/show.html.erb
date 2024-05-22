@@ -1,11 +1,5 @@
 <h1>Sections#show</h1>
 
-<% if !flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice]%>
-  </div>
-<% end%>
-
 <%= link_to("<< back to List", sections_path, :class => "back-link") %>
 
 <table class="listing" summary="Section list">
@@ -35,3 +29,4 @@
       </tr>
   </tbody>
 </table>
+ 

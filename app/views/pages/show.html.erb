@@ -1,11 +1,5 @@
 <h1>Pages#show</h1>
 
-<% if !flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice]%>
-  </div>
-<% end%>
-
 <%= link_to("<< back to List", pages_path, :class => "back-link") %>
 
 <table class="listing" summary="Subject list">
