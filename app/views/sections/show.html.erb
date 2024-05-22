@@ -1,0 +1,37 @@
+<h1>Sections#show</h1>
+
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice]%>
+  </div>
+<% end%>
+
+<%= link_to("<< back to List", sections_path, :class => "back-link") %>
+
+<table class="listing" summary="Section list">
+  <thead>
+    <tr class="header">
+      <th>Page_id</th>
+      <th>Section name</th>
+      <th>Position</th>
+      <th>Visible</th>
+      <th>Content Type</th>
+      <th>Content</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @section.page_id %></td>
+        <td><%= @section.name %></td>
+        <td><%= @section.position %></td>
+        <td class="center"><%= @section.visible ? 'Yes' : 'No' %></td>
+        <td><%= @section.content_type %></td>
+        <td><%= @section.content %></td>
+        <td class="actions">
+            <%= link_to("Edit", edit_section_path(@section), :class => 'action edit')%>
+            <%= link_to("Delete", delete_section_path(@section), :class => 'action delete')%>
+        </td>
+      </tr>
+  </tbody>
+</table>

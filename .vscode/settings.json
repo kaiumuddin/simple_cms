@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "test",
+            "username": "anika",
+            "password": "1234",
+            "database": "simple_cms_development"
+        }
+    ]
+}

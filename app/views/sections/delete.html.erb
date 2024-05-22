@@ -1,0 +1,20 @@
+<h1>Sections#delete</h1>
+
+<%= link_to("<< back to List", sections_path, :class => "back-link") %>
+
+<div class="section delete">
+    <h2>Delete Section</h2>
+
+    <%= form_for(@section, :method => 'delete')  do |form| %>
+
+        <p> Are you sure you want to parmanently delete this Section? </p>
+
+        <p class="refence-name"> <%= form.object.name %> </p>
+
+        <div class="form-buttons">
+            <%= form.submit("Delete Section") %>
+        </div>
+
+    <% end%>
+</div>
+

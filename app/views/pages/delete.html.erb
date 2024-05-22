@@ -1,0 +1,19 @@
+<h1>Pages#delete</h1>
+
+<%= link_to("<< back to List", pages_path, :class => "back-link") %>
+
+<div class="pages delete">
+    <h2>Delete Page</h2>
+
+    <%= form_for(@page, :method => 'delete')  do |form| %>
+
+        <p> Are you sure you want to parmanently delete this page? </p>
+
+        <p class="refence-name"> <%= form.object.name %> </p>
+
+        <div class="form-buttons">
+            <%= form.submit("Delete Page") %>
+        </div>
+
+    <% end%>
+</div>

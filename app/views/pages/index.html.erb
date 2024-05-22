@@ -1,0 +1,43 @@
+<h1>Pages#index</h1>
+
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice]%>
+  </div>
+<% end%>
+
+<h1>All Pages</h1>
+
+<%= link_to("Add New Page", new_page_path, :class => "action new") %>
+
+<table class="listing" summary="Subject list">
+  <thead>
+    <tr class="header">
+      <th>Subject_id</th>
+      <th>Page_name</th>
+      <th>Permalink</th>
+      <th>Position</th>
+      <th>Visible</th>
+      <th>Sections</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.subject_id %></td>
+        <td><%= page.name %></td>
+        <td><%= page.permalink %></td>
+        <td><%= page.position %></td>
+        <td class="center"><%= page.visible ? 'Yes' : 'No' %></td>
+        <td class="center"><%= page.sections.size %></td>
+        <td class="actions">
+            <%= link_to("Show", {:controller => 'pages', :action => 'show', :id => page.id}, :class => 'action show')%>
+            <%= link_to("Edit", edit_page_path(page), :class => 'action edit')%>
+            <%= link_to("Delete", delete_page_path(page), :class => 'action delete')%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

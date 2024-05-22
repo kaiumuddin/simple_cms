@@ -1,0 +1,53 @@
+<h1>Sections#edit</h1>
+
+<%= link_to("<< back to List", sections_path, :class => "back-link") %>
+
+
+<%= form_with(model: @section, local: true) do |form| %>
+  <% if @section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@section.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% @section.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :page_id %>
+    <%= form.text_field :page_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+   <div class="field">
+    <%= form.label :position %>
+    <%= form.number_field :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :visible %>
+    <%= form.check_box :visible %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content_type %>
+    <%= form.text_field :content_type %>
+  </div>
+ 
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
