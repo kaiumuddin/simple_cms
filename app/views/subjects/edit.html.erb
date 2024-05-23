@@ -1,3 +1,6 @@
+<% @page_title = "Update Subjects" %>
+
+
 <h1>Subjects#edit</h1>
 
 <%= link_to("<< back to List", subjects_path, :class => "back-link") %>
@@ -16,20 +19,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.number_field :position %>
-  </div>
-
-  <div class="field">
-    <%= form.label :visible %>
-    <%= form.check_box :visible %>
-  </div>
+  <%= render(:partial => 'form', :locals => {:form => form}) %>
 
   <div class="actions">
     <%= form.submit %>
