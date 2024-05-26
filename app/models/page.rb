@@ -8,4 +8,7 @@ class Page < ApplicationRecord
   scope :sorted, -> { order('position ASC') }
   scope :newest_first, -> { order('created_at DESC') }
   scope :search, ->(query) { where(['name LIKE ?', "%#{query}%"]) }
+
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :permalink, presence: true, uniqueness: true, length: { within: 3..255 }
 end

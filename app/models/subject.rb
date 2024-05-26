@@ -9,6 +9,6 @@ class Subject < ApplicationRecord
   scope :newest_first, -> { order('created_at DESC') }
   scope :search, ->(query) { where(['name LIKE ?', "%#{query}%"]) }
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3, maximum: 255 }
 
 end
