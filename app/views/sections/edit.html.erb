@@ -16,38 +16,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :page_id %>
-    <%= form.text_field :page_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-   <div class="field">
-    <%= form.label :position %>
-    <%= form.number_field :position %>
-  </div>
-
-  <div class="field">
-    <%= form.label :visible %>
-    <%= form.check_box :visible %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content_type %>
-    <%= form.text_field :content_type %>
-  </div>
- 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= render(:partial => 'form', :locals => {:form => form}) %>
+  
 <% end %>
 

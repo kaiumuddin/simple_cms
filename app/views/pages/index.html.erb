@@ -1,37 +1,38 @@
-<h1>Pages#index</h1>
+<h1 class="text-3xl font-bold text-center text-black mb-6">All Pages</h1>
 
-<h1>All Pages</h1>
+<div class="text-center mb-4 flex flex-row-reverse">
+  <%= link_to("Add New Page", new_page_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded") %>
+</div>
 
-<%= link_to("Add New Page", new_page_path, :class => "action new") %>
-
-<table class="listing" summary="Subject list">
-  <thead>
-    <tr class="header">
-      <th>Subject_id</th>
-      <th>Page_name</th>
-      <th>Permalink</th>
-      <th>Position</th>
-      <th>Visible</th>
-      <th>Sections</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pages.each do |page| %>
-      <tr>
-        <td><%= page.subject_id %></td>
-        <td><%= page.name %></td>
-        <td><%= page.permalink %></td>
-        <td><%= page.position %></td>
-        <td class="center"><%= page.visible ? 'Yes' : 'No' %></td>
-        <td class="center"><%= page.sections.size %></td>
-        <td class="actions">
-            <%= link_to("Show", {:controller => 'pages', :action => 'show', :id => page.id}, :class => 'action show')%>
-            <%= link_to("Edit", edit_page_path(page), :class => 'action edit')%>
-            <%= link_to("Delete", delete_page_path(page), :class => 'action delete')%>
-        </td>
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white rounded-lg shadow-lg">
+    <thead>
+      <tr class="bg-gray-800 text-white">
+        <th class="py-2 px-4">Subject ID</th>
+        <th class="py-2 px-4">Page Name</th>
+        <th class="py-2 px-4">Permalink</th>
+        <th class="py-2 px-4">Position</th>
+        <th class="py-2 px-4">Visible</th>
+        <th class="py-2 px-4">Sections</th>
+        <th class="py-2 px-4">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      <% @pages.each do |page| %>
+        <tr class="border-b border-gray-200 hover:bg-gray-100">
+          <td class="py-2 px-4 text-center"><%= page.subject_id %></td>
+          <td class="py-2 px-4"><%= page.name %></td>
+          <td class="py-2 px-4"><%= page.permalink %></td>
+          <td class="py-2 px-4 text-center"><%= page.position %></td>
+          <td class="py-2 px-4 text-center"><%= page.visible ? 'Yes' : 'No' %></td>
+          <td class="py-2 px-4 text-center"><%= page.sections.size %></td>
+          <td class="py-2 px-4 text-center space-x-2 flex">
+            <%= link_to("Show", page_path(page), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded') %>
+            <%= link_to("Edit", edit_page_path(page), class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded') %>
+            <%= link_to("Delete", delete_page_path(page), class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

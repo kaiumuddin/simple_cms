@@ -1,0 +1,45 @@
+<div class="field mb-4">
+  <%= form.label :page_id, class: "block text-sm font-medium text-gray-700" %>
+  <%= form.select :page_id, @pages.map {|p| [p.name, p.id]}, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+</div>
+
+<div class="field mb-4">
+  <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+  <%= form.text_field :name, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+</div>
+
+<div class="field mb-4">
+  <%= form.label :position, class: "block text-sm font-medium text-gray-700" %>
+  <%= form.select :position, 1..@section_count, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+</div>
+
+<div class="field mb-4">
+  <%= form.label :visible, class: "block text-sm font-medium text-gray-700" %>
+  <div class="mt-2">
+    <%= form.check_box :visible, class: "h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" %>
+    <%= form.label :visible, "Visible", class: "ml-2 text-sm text-gray-700" %>
+  </div>
+</div>
+
+<div class="field mb-4">
+  <%= form.label :content_type, class: "block text-sm font-medium text-gray-700" %>
+  <div class="mt-2">
+    <label class="inline-flex items-center">
+      <%= form.radio_button :content_type, 'text', class: "form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+      <span class="ml-2 text-gray-700">Text</span>
+    </label>
+    <label class="inline-flex items-center ml-4">
+      <%= form.radio_button :content_type, 'HTML', class: "form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+      <span class="ml-2 text-gray-700">HTML</span>
+    </label>
+  </div>
+</div>
+
+<div class="field mb-4">
+  <%= form.label :content, class: "block text-sm font-medium text-gray-700" %>
+  <%= form.text_area :content, size: '40x10', class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+</div>
+
+<div class="actions mt-4">
+  <%= form.submit "Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" %>
+</div>

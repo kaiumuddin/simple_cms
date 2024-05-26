@@ -23,10 +23,16 @@
         <tr class="border-b border-gray-200 hover:bg-gray-100">
           <td class="py-2 px-4 text-center"><%= subject.position %></td>
           <td class="py-2 px-4"><%= subject.name %></td>
-          <td class="py-2 px-4 text-center"><%= subject.visible %></td>
+          <td class="py-2 px-4 text-center">
+            <% if subject.visible %>
+              <span class="inline-block w-6 h-6 bg-green-500 rounded-full"></span>
+            <% else %>
+              <span class="inline-block w-6 h-6 bg-red-500 rounded-full"></span>
+            <% end %>
+          </td>
           <td class="py-2 px-4 text-center"><%= subject.pages.size %></td>
-          <td class="py-2 px-4 text-center space-x-2 flex">
-            <%= link_to("Show", {:controller => 'subjects', :action => 'show', :id => subject.id}, class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded') %>
+          <td class="py-2 px-4 text-center space-x-2 flex justify-center">
+            <%= link_to("Show", subject_path(subject), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded') %>
             <%= link_to("Edit", edit_subject_path(subject), class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded') %>
             <%= link_to("Delete", delete_subject_path(subject), class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded') %>
           </td>

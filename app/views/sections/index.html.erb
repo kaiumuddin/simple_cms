@@ -1,38 +1,44 @@
-<h1>Sections#index</h1>
+<h1 class="text-3xl font-bold text-center text-black mb-6">All Sections</h1>
 
-<h1>All Sections</h1>
+<div class="text-center mb-4 flex flex-row-reverse">
+  <%= link_to("Add New Section", new_section_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded") %>
+</div>
 
-<%= link_to("Add New Section", new_section_path, :class => "action new") %>
-
-<table class="listing" summary="Section list">
-  <thead>
-    <tr class="header">
-      <th>Page_id</th>
-      <th>Section_name</th>
-      <th>Position</th>
-      <th>Visible</th>
-      <th>Content_type</th>
-      <th>Content</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @sections.each do |section| %>
-      <tr>
-        <td><%= section.page_id %></td>
-        <td><%= section.name %></td>
-        <td><%= section.position %></td>
-        <td class="center"><%= section.visible ? 'Yes' : 'No' %></td>
-        <td><%= section.content_type %></td>
-        <td><%= section.content %></td>
-        <td class="actions">
-            <%= link_to("Show", section_path(section), :class => 'action show')%>
-            <%= link_to("Edit", edit_section_path(section), :class => 'action edit')%>
-            <%= link_to("Delete", delete_section_path(section), :class => 'action delete')%>
-        </td>
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white rounded-lg shadow-lg">
+    <thead>
+      <tr class="bg-gray-800 text-white">
+        <th class="py-2 px-4">Page ID</th>
+        <th class="py-2 px-4">Section Name</th>
+        <th class="py-2 px-4">Position</th>
+        <th class="py-2 px-4">Visible</th>
+        <th class="py-2 px-4">Content Type</th>
+        <th class="py-2 px-4">Content</th>
+        <th class="py-2 px-4">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
+    </thead>
+    <tbody>
+      <% @sections.each do |section| %>
+        <tr class="border-b border-gray-200 hover:bg-gray-100">
+          <td class="py-2 px-4 text-center"><%= section.page_id %></td>
+          <td class="py-2 px-4"><%= section.name %></td>
+          <td class="py-2 px-4 text-center"><%= section.position %></td>
+          <td class="py-2 px-4 text-center">
+            <% if section.visible %>
+              <span class="inline-block w-6 h-6 bg-green-500 rounded-full"></span>
+            <% else %>
+              <span class="inline-block w-6 h-6 bg-red-500 rounded-full"></span>
+            <% end %>
+          </td>
+          <td class="py-2 px-4"><%= section.content_type %></td>
+          <td class="py-2 px-4 truncate"><%= section.content %></td>
+          <td class="py-2 px-4 text-center space-x-2 flex justify-center">
+            <%= link_to("Show", section_path(section), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded') %>
+            <%= link_to("Edit", edit_section_path(section), class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded') %>
+            <%= link_to("Delete", delete_section_path(section), class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
