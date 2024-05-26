@@ -6,17 +6,11 @@
   <%= link_to "<< back to List", subjects_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
 </div>
 
+
+
 <%= form_with(model: @subject, local: true, class: "bg-white p-8 rounded shadow-md max-w-lg mx-auto") do |form| %>
-  <% if @subject.errors.any? %>
-    <div id="error_explanation" class="mb-4 p-4 bg-red-100 text-red-700 border border-red-400 rounded">
-      <h2 class="font-bold mb-2"><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
-      <ul class="list-disc pl-5">
-        <% @subject.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+  
 
   <%= render partial: 'form', locals: { form: form } %>
 

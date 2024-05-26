@@ -3,10 +3,12 @@ class Subject < ApplicationRecord
   # has_one :page
   has_many :pages
 
-  scope :visible, lambda { where(:visible => true) }
-  scope :invisible, lambda { where(:visible => false) }
-  scope :sorted, lambda { order("position ASC") }
-  scope :newest_first, lambda { order("created_at DESC") }
-  scope :search, lambda {|query| where(["name LIKE ?", "%#{query}%"])}
+  scope :visible, -> { where(visible: true) }
+  scope :invisible, -> { where(visible: false) }
+  scope :sorted, -> { order('position ASC') }
+  scope :newest_first, -> { order('created_at DESC') }
+  scope :search, ->(query) { where(['name LIKE ?', "%#{query}%"]) }
+
+  validates :name, presence: true
 
 end
