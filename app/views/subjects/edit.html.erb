@@ -1,16 +1,29 @@
-<% @page_title = "Update Subjects" %>
+<% @page_title = "Update Subject" %>
 
+<h1 class="text-3xl font-bold text-center text-black mb-6">Edit Subject</h1>
 
-<h1>Subjects#edit</h1>
+<div class="text-center mb-4">
+  <%= link_to("<< back to List", subjects_path, class: "text-blue-500 hover:underline") %>
+</div>
 
-<%= link_to("<< back to List", subjects_path, :class => "back-link") %>
+<%= form_with(model: @subject, local: true, class: "bg-white p-6 rounded-lg shadow-lg") do |form| %>
 
+  <% if @subject.errors.any? %>
+    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+      <strong class="font-bold"><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</strong>
+      <span class="block sm:inline">
+        <ul>
+          <% @subject.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </span>
+    </div>
+  <% end %>
 
-<%= form_with(model: @subject, local: true) do |form| %>
-  
+  <%= render(:partial => 'form', :locals => { form: form }) %>
 
-  <%= render(:partial => 'form', :locals => {:form => form}) %>
-
-
+  <div class="text-center mt-4">
+    <%= form.submit "Update Subject", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
 <% end %>
-

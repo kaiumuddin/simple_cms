@@ -1,21 +1,24 @@
-<h1>Pages#new</h1>
+<h1 class="text-3xl font-bold text-center text-black mb-6">New Page</h1>
 
-<%= link_to("<< back to List", pages_path, :class => "back-link") %>
+<div class="text-center mb-4">
+  <%= link_to("<< back to List", pages_path, class: "text-blue-500 hover:underline") %>
+</div>
 
-
-<%= form_with(model: @page, local: true) do |form| %>
+<%= form_with(model: @page, local: true, class: "bg-white p-6 rounded-lg shadow-lg") do |form| %>
   <% if @page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
-
-      <ul>
+    <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+      <strong class="font-bold"><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</strong>
+      <span class="block sm:inline"><ul>
         <% @page.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
-      </ul>
+      </ul></span>
     </div>
   <% end %>
 
-  <%= render(:partial => 'form', :locals => {:form => form}) %>
+  <%= render(:partial => 'form', :locals => { form: form }) %>
 
+  <div class="text-center mt-4">
+    <%= form.submit "Create Page", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
 <% end %>

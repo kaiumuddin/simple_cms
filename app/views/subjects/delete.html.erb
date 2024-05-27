@@ -1,24 +1,21 @@
-<% @page_title = "Delete Subjects" %>
+<% @page_title = "Delete Subject" %>
 
+<h1 class="text-3xl font-bold text-center text-black mb-6">Delete Subject</h1>
 
-<h1>Subjects#delete</h1>
+<div class="text-center mb-4">
+  <%= link_to("<< back to List", subjects_path, class: "text-blue-500 hover:underline") %>
+</div>
 
-<%= link_to("<< back to List", subjects_path, :class => "back-link") %>
+<div class="bg-white p-6 rounded-lg shadow-lg mx-auto max-w-lg">
+  <h2 class="text-xl font-bold text-red-500 mb-4">Delete Subject</h2>
 
-<div class="subjects delete">
-    <h2>Delete Subject</h2>
+  <%= form_for(@subject, method: :delete) do |form| %>
+    <p class="text-gray-700 mb-4">Are you sure you want to permanently delete this subject?</p>
 
-    <%= form_for(@subject, :method => 'delete')  do |form| %>
+    <p class="text-lg font-semibold text-gray-900 mb-4"><%= form.object.name %></p>
 
-        <p> Are you sure you want to parmanently delete this subject? </p>
-
-        <p class="refence-name"> <%= form.object.name %> </p>
-
-        <div class="form-buttons">
-            <%= form.submit("Delete Subject") %>
-        </div>
-
-    <% end%>
-</div>subject
-Subjectsubject
-Subject
+    <div class="flex justify-center">
+      <%= form.submit("Delete Subject", class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded") %>
+    </div>
+  <% end %>
+</div>

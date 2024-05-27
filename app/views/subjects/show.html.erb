@@ -1,34 +1,44 @@
 <% @page_title = "Show Subject" %>
 
-<h1>Subjects#show</h1>
+<h1 class="text-3xl font-bold text-center text-black mb-6">Subject Details</h1>
 
-<%= link_to("<< back to List", subjects_path, :class => "back-link") %>
+<div class="text-center mb-4">
+  <%= link_to("<< back to List", subjects_path, class: "text-blue-500 hover:underline") %>
+</div>
 
-<table class="listing" summary="Subject list">
-  <thead>
-    <tr class="header">
-      <th>#</th>
-      <th>Subject</th>
-      <th>Visible</th>
-      <th>Pages</th>
-      <th>Created</th>
-      <th>Updated</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td><%= @subject.position %></td>
-        <td><%= @subject.name %></td>
-        <td class="center"><%= @subject.visible %></td>
-        <td class="center"><%= @subject.pages.size %></td>
-        <td><%= @subject.created_at %></td>
-        <td><%= @subject.updated_at %></td>
-        <td class="actions">
-            <%= link_to("Show", subject_path(@subject), :class => 'action show')%>
-            <%= link_to("Edit", '#', :class => 'action edit')%>
-            <%= link_to("Delete", '#', :class => 'action delete')%>
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white rounded-lg shadow-lg">
+    <thead>
+      <tr class="bg-gray-800 text-white">
+        <th class="py-2 px-4">#</th>
+        <th class="py-2 px-4">Subject</th>
+        <th class="py-2 px-4">Visible</th>
+        <th class="py-2 px-4">Pages</th>
+        <th class="py-2 px-4">Created</th>
+        <th class="py-2 px-4">Updated</th>
+        <th class="py-2 px-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-b border-gray-200 hover:bg-gray-100">
+        <td class="py-2 px-4 text-center"><%= @subject.position %></td>
+        <td class="py-2 px-4"><%= @subject.name %></td>
+        <td class="py-2 px-4 text-center">
+          <% if @subject.visible %>
+            <span class="inline-block w-6 h-6 bg-green-500 rounded-full"></span>
+          <% else %>
+            <span class="inline-block w-6 h-6 bg-red-500 rounded-full"></span>
+          <% end %>
+        </td>
+        <td class="py-2 px-4 text-center"><%= @subject.pages.size %></td>
+        <td class="py-2 px-4"><%= @subject.created_at.strftime("%B %d, %Y") %></td>
+        <td class="py-2 px-4"><%= @subject.updated_at.strftime("%B %d, %Y") %></td>
+        <td class="py-2 px-4 text-center space-x-2 flex justify-center">
+          <%= link_to("Show", subject_path(@subject), class: 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded') %>
+          <%= link_to("Edit", edit_subject_path(@subject), class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded') %>
+          <%= link_to("Delete", delete_subject_path(@subject), method: :delete, data: { confirm: "Are you sure?" }, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded') %>
         </td>
       </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
