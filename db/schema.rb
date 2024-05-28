@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_21_044916) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_053501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_044916) do
     t.string "first_name", limit: 25
     t.string "last_name", limit: 50
     t.string "email", limit: 100, default: "", null: false
-    t.string "hashed_password", limit: 40
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", limit: 25
+    t.string "password_digest"
     t.index ["username"], name: "index_admin_users_on_username"
   end
 

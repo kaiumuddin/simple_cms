@@ -10,17 +10,43 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
+<body class="flex flex-col min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
 
+    <!-- Navbar -->
+    <nav class="bg-gray-800 w-full py-4">
+        <div class="container mx-auto flex items-center justify-between px-6">
+            <div class="text-xl font-bold">
+                <%= link_to "Simple CMS Admin", root_path, class: "text-white" %>
+            </div>
+            <ul class="flex space-x-4">
+                <li><%= link_to "Manage Subjects", subjects_path, class: "text-gray-300 hover:text-white" %></li>
+                <li><%= link_to "Manage Pages", pages_path, class: "text-gray-300 hover:text-white" %></li>
+                <li><%= link_to "Manage Sections", sections_path, class: "text-gray-300 hover:text-white" %></li>
+                <li><%= link_to "Logout", access_logout_path, class: "text-gray-300 hover:text-white" %></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Flash messages -->
     <% if !flash[:notice].blank? %>
-        <div class="mb-4 p-4 bg-green-500 text-green-100 rounded shadow-lg">
+        <div class="my-4 p-4 bg-green-500 text-green-100 rounded shadow-lg container mx-auto">
             <%= flash[:notice] %>
         </div>
     <% end %>
 
-    <div class="bg-white text-gray-800 rounded shadow-lg p-8 w-full max-w-4xl">
-        <%= yield %>
+    <!-- Main content -->
+    <div class="flex-grow container mx-auto px-6 py-8">
+        <div class="bg-white text-gray-800 rounded shadow-lg p-8 w-full max-w-4xl mx-auto">
+            <%= yield %>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 w-full py-4 mt-8">
+        <div class="container mx-auto text-center text-gray-400">
+            &copy; <%= Time.now.year %> Simple CMS Admin. All rights reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
